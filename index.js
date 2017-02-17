@@ -21,8 +21,10 @@ function _findRoute(path,stack) {
 }
 
 function findRoute(app, path) {
-    var  stack;
-    stack = app._router.stack;
+    if (!app._router) {
+        return [];
+    }    
+    var stack = app._router.stack;
     return (_findRoute(path, stack));
 }
 
@@ -36,12 +38,10 @@ module.exports = function removeRoute(app, path, method) {
 
     found = findRoute(app, path);
 
-
     found.forEach(function(layer) {
         route = layer.route;
         stack = layer.stack;
 
-        console.log('found', route, JSON.stringify(route.route.methods))
         if (route) {
             if(_.isEmpty(method)){  // if no method delete all resource with the given path
                 idx = stack.indexOf(route);
