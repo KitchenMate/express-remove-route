@@ -1,10 +1,5 @@
-var util=require('util');
-var _=require('underscore');
-
-
-
-
-
+var util = require('util');
+var _ = require('underscore');
 
 function _findRoute(path,stack) {
     var count=0;
@@ -12,11 +7,12 @@ function _findRoute(path,stack) {
     stack.forEach(function(layer) {
         if (!layer) return;
         if (layer && !layer.match(path)) return;
+        if (layer.route === undefined) return;
         if (['query', 'expressInit'].indexOf(layer.name) != -1) return;
         if (layer.name == 'router') {
             routes=routes.concat(_findRoute(trimPrefix(path, layer.path),layer.handle.stack));
         } else {
-            if (layer.name == 'bound ') {
+            if (layer.name.indexOf('bound') >= 0) {
                 routes.push({route: layer || null, stack: stack});
             }
         }
@@ -35,16 +31,17 @@ function trimPrefix(path, prefix) {
     return path.substr(prefix.length);
 }
 
-
 module.exports = function removeRoute(app, path, method) {
     var found, route, stack, idx;
 
     found = findRoute(app, path);
 
+
     found.forEach(function(layer) {
         route = layer.route;
         stack = layer.stack;
 
+        console.log('found', route, JSON.stringify(route.route.methods))
         if (route) {
             if(_.isEmpty(method)){  // if no method delete all resource with the given path
                 idx = stack.indexOf(route);

@@ -1,5 +1,5 @@
 {
-  "name": "remove-route-onthefly",
+  "name": "express-remove-route",
   "version": "0.1.4",
   "description": "Remove a route in express at runtime.",
   "main": "index.js",
@@ -15,11 +15,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aromanino/express-remove-route.git"
+    "url": "git+https://github.com/virtuocity/express-remove-route.git"
   },
-  "author": "Alessandro Romanino. project forked from Brennancheung",
+  "author": "Virtuocity forked from Alessandro Romanino (in turn forked from Brennancheung)",
   "bugs": {
-    "url": "https://github.com/aromanino/express-remove-route/issues"
+    "url": "https://github.com/virtuocity/express-remove-route/issues"
   },
-  "homepage": "https://github.com/aromanino/express-remove-route#readme"
+  "homepage": "https://github.com/virtuocity/express-remove-route#readme"
 }
