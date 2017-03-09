@@ -1,5 +1,5 @@
 var util = require('util');
-var _ = require('underscore');
+var isEmpty = require('lodash.isempty');
 
 function _findRoute(path,stack) {
     var count=0;
@@ -43,7 +43,7 @@ module.exports = function removeRoute(app, path, method) {
         stack = layer.stack;
 
         if (route) {
-            if(_.isEmpty(method)){  // if no method delete all resource with the given path
+            if(isEmpty(method)){  // if no method delete all resource with the given path
                 idx = stack.indexOf(route);
                 stack.splice(idx, 1);
             }else if(JSON.stringify(route.route.methods).toUpperCase().indexOf(method.toUpperCase())>=0){  // if method defined delete only the resource with the given ath and method
