@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/virtuocity/express-remove-route#readme",
   "dependencies": {
-    "lodash.isempty": "^4.4.0"
+    "lodash.isempty": "4.4.0"
   }
 }
